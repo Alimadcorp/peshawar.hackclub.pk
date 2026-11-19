@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Haven Peshawar Wall</title>
+<link href="https://haven.hackclub.com/images/hedgehog.webp" rel="icon" type="image/png"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Darumadrop+One&amp;family=Jua&amp;display=swap" rel="stylesheet"/>
+<style>
+        :root {
+            --haven-green: #588b43;
+            --haven-green-deep: #2b4d1d;
+            --haven-yellow: #ffe66d;
+            --haven-butter: #fff3b0;
+            --haven-parchment: #fff6dc;
+            --haven-wood: #c58246;
+            --haven-wood-dark: #8c5220;
+            --haven-orange-bright: #fa681b;
+            --haven-orange-mid: #d95214;
+            --haven-orange-deep: #8f2d06;
+            --haven-brown-dark: #4a2c11;
+            --haven-brown-light: #7a4b23;
+            --font-display: 'Darumadrop One', cursive, sans-serif;
+            --font-body: 'Jua', sans-serif;
+        }
+
+        ::selection {
+            background-color: var(--haven-brown-dark);
+            color: var(--haven-butter);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--haven-green);
+            background-image: url("https://haven.hackclub.com/images/hero/hero-bg-no-sticky-tree.webp");
+            background-size: cover;
+            background-position: top center;
+            background-attachment: fixed;
+            font-family: var(--font-body);
+            color: #ffffff;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        .corner-flower {
+            position: fixed;
+            pointer-events: none;
+            z-index: 1;
+            width: clamp(5rem, 16vw, 13rem);
+            object-fit: contain;
+        }
+
+        .flower-tl { top: 0; left: 0; }
+        .flower-tr { top: 0; right: 0; }
+        .flower-bl { bottom: 0; left: 0; }
+        .flower-br { bottom: 0; right: 0; }
+
+        header {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            padding: 2.5rem 1.5rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .logo {
+            width: clamp(11rem, 22vw, 17rem);
+            height: auto;
+            filter: drop-shadow(0 4px 12px rgba(43, 77, 29, 0.5));
+            margin-bottom: 0.5rem;
+            transition: transform 0.2s ease;
+        }
+
+        h1 {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            line-height: 0.95;
+            letter-spacing: -0.02em;
+            color: #ffffff;
+            text-shadow: 0 0 12px var(--haven-orange-bright), 0 4px 0 var(--haven-green-deep);
+        }
+
+        .subtitle {
+            margin-top: 0.65rem;
+            font-size: clamp(1rem, 2vw, 1.35rem);
+            color: var(--haven-butter);
+            text-shadow: 0 2px 6px rgba(43, 77, 29, 0.8);
+        }
+
+        main {
+            position: relative;
+            z-index: 10;
+            max-width: 1320px;
+            margin: 0 auto;
+            padding: 1.5rem clamp(1rem, 4vw, 3rem) 7rem;
+        }
+
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr));
+            gap: 1.75rem;
+            align-items: stretch;
+        }
+
+        .game-card {
+            position: relative;
+            background-color: var(--haven-parchment);
+            border: 4px solid #ffffff;
+            outline: 3px solid var(--haven-wood);
+            border-radius: 1.4rem;
+            padding: 1.15rem;
+            display: flex;
+            flex-direction: column;
+            color: var(--haven-brown-dark);
+            box-shadow: 0 10px 24px rgba(26, 48, 16, 0.42);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        /* Rank Card Highlights & Badges */
+        .game-card.rank-1 {
+            outline-color: #d99b16;
+            box-shadow: 0 12px 28px rgba(217, 155, 22, 0.45);
+        }
+
+        .game-card.rank-2 {
+            outline-color: #8f9ba8;
+        }
+
+        .game-card.rank-3 {
+            outline-color: #b86b35;
+        }
+
+        .rank-badge {
+            position: absolute;
+            top: -0.85rem;
+            right: -0.65rem;
+            z-index: 5;
+            font-family: var(--font-display);
+            font-size: 1.35rem;
+            /* line-height: 1; */
+            padding: 0.2rem 0.85rem;
+            border-radius: 999px;
+            border: 3px solid #ffffff;
+            transform: rotate(6deg);
+            box-shadow: 0 4px 10px rgba(43, 77, 29, 0.35);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            user-select: none;
+        }
+
+        .rank-badge-1 {
+            background: linear-gradient(135deg, #ffe66d 0%, #f5b727 100%);
+            color: #4a2c11;
+            outline: 2px solid #b57c0d;
+        }
+
+        .rank-badge-2 {
+            background: linear-gradient(135deg, #f3f6fa 0%, #c8d1dc 100%);
+            color: #2f3a47;
+            outline: 2px solid #7f8c9b;
+        }
+
+        .rank-badge-3 {
+            background: linear-gradient(135deg, #f4b886 0%, #cd7f43 100%);
+            color: #3d1d07;
+            outline: 2px solid #8c4a1c;
+        }
+
+        .photo-wrap {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            border-radius: 0.95rem;
+            overflow: hidden;
+            border: 3px solid var(--haven-wood);
+            background: var(--haven-green-deep);
+            margin-bottom: 0.95rem;
+        }
+
+        .photo-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .game-title {
+            font-family: var(--font-display);
+            font-size: 1.85rem;
+            line-height: 1.05;
+            color: var(--haven-orange-deep);
+            margin-bottom: 0.45rem;
+        }
+
+        .game-desc {
+            font-size: 0.98rem;
+            line-height: 1.38;
+            color: var(--haven-brown-dark);
+            margin-bottom: 1rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        /* Team Members Pills */
+        .team-section {
+            margin-top: auto;
+            margin-bottom: 1rem;
+            padding-top: 0.65rem;
+            border-top: 2px dashed rgba(122, 75, 35, 0.22);
+        }
+
+        .team-label {
+            font-size: 0.82rem;
+            color: var(--haven-brown-light);
+            margin-bottom: 0.35rem;
+            display: block;
+        }
+
+        .team-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            list-style: none;
+        }
+
+        .team-pill {
+            background: #ffffff;
+            border: 2px solid var(--haven-orange-mid);
+            color: var(--haven-orange-deep);
+            padding: 0.2rem 0.65rem;
+            border-radius: 999px;
+            font-size: 0.88rem;
+            line-height: 1.1;
+            box-shadow: 0 2px 0 rgba(143, 45, 6, 0.14);
+        }
+
+        .card-actions {
+            display: flex;
+            gap: 0.65rem;
+        }
+
+        .btn {
+            flex: 1;
+            text-align: center;
+            text-decoration: none;
+            padding: 0.65rem 0.9rem;
+            border-radius: 0.95rem;
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            line-height: 1;
+            transition: transform 0.15s ease, filter 0.15s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.4rem;
+        }
+
+        .btn:hover {
+            transform: scale(1.04);
+            filter: brightness(1.06);
+        }
+
+        .btn:active {
+            transform: scale(0.98);
+        }
+
+        .btn-play {
+            background-color: var(--haven-orange-bright);
+            color: #ffffff;
+            box-shadow: 0 3px 0 var(--haven-orange-deep);
+        }
+
+        .btn-code {
+            background-color: var(--haven-green);
+            color: #ffffff;
+            box-shadow: 0 3px 0 var(--haven-green-deep);
+        }
+
+        .hedgehog {
+            position: fixed;
+            bottom: 0rem;
+            right: 1.5rem;
+            width: clamp(5rem, 11vw, 8.5rem);
+            transform: scaleX(-1);
+            pointer-events: none;
+            z-index: 20;
+        }
+
+        .status-msg {
+            text-align: center;
+            font-size: 1.4rem;
+            background: rgba(43, 77, 29, 0.85);
+            padding: 1.5rem 2rem;
+            border-radius: 1.25rem;
+            max-width: 32rem;
+            margin: 2rem auto;
+        }
+    </style>
+</head>
+<body>
+<img alt="" aria-hidden="true" class="corner-flower flower-tl" src="assets/haven.hackclub.com/images/steps/flowers-top-l.webp"/>
+<img alt="" aria-hidden="true" class="corner-flower flower-tr" src="assets/haven.hackclub.com/images/steps/flowers-top-r.webp"/>
+<img alt="" aria-hidden="true" class="corner-flower flower-bl" src="assets/haven.hackclub.com/images/steps/flowers-bottom-l.webp"/>
+<img alt="" aria-hidden="true" class="corner-flower flower-br" src="assets/haven.hackclub.com/images/steps/flowers-bottom-r.webp"/>
+<img alt="" aria-hidden="true" class="hedgehog" src="assets/haven.hackclub.com/images/hedgehog.webp"/>
+<header>
+<a aria-label="Hack Club Haven Home" href="https://haven.hackclub.com">
+<img alt="Hack Club Haven" class="logo" src="assets/haven.hackclub.com/images/logo.webp"/>
+</a>
+<h1>Haven Peshawar Wall</h1>
+<p class="subtitle">11 students participated out of which 10 made a total of 9 games.</p>
+</header>
+<main>
+<div class="games-grid" id="games-grid"></div>
+</main>
+<p style="text-align: center; padding-bottom: 5rem; color: var(--haven-orange-deep);">Made with &lt;3 and :3c by your local organizers</p>
+<script>
+        function formatMemberName(fullName) {
+            return fullName.trim().replace(/\s+[A-Za-z]\.?$/, '');
+        }
+
+        function escapeHtml(str) {
+            const div = document.createElement('div');
+            div.textContent = str ?? '';
+            return div.innerHTML;
+        }
+
+        function getRankBadge(index) {
+            const ranks = [
+                { place: '1st', medal: '', className: 'rank-badge-1' },
+                { place: '2nd', medal: '', className: 'rank-badge-2' },
+                { place: '3rd', medal: '', className: 'rank-badge-3' }
+            ];
+            const rank = ranks[index];
+            if (!rank) return '';
+            return `<div class="rank-badge ${rank.className}" aria-label="${rank.place} Place">${rank.medal} ${rank.place}</div>`;
+        }
+
+        function renderGames(games) {
+            const grid = document.getElementById('games-grid');
+
+            if (!Array.isArray(games) || games.length === 0) {
+                grid.innerHTML = `<p class="status-msg">No games found in games.json yet!</p>`;
+                return;
+            }
+
+            grid.innerHTML = games.map((game, index) => {
+                const rankClass = index < 3 ? ` rank-${index + 1}` : '';
+                const badgeHtml = getRankBadge(index);
+
+                const membersHtml = (game.teamMembers || [])
+                    .map(member => `<li class="team-pill">${escapeHtml(formatMemberName(member))}</li>`)
+                    .join('');
+
+                return `
+                    <article class="game-card${rankClass}">
+                        ${badgeHtml}
+                        <div class="photo-wrap">
+                            <img
+                                src="${escapeHtml(game.gamePhoto)}"
+                                alt="${escapeHtml(game.gameName)} screenshot"
+                                loading="lazy"
+                            />
+                        </div>
+
+                        <h2 class="game-title">${escapeHtml(game.gameName)}</h2>
+                        <p class="game-desc" title="${escapeHtml(game.gameDescription)}">${escapeHtml(game.gameDescription)}</p>
+
+                        ${membersHtml ? `
+                            <div class="team-section">
+                                <span class="team-label">Made by:</span>
+                                <ul class="team-list">${membersHtml}</ul>
+                            </div>
+                        ` : ''}
+
+                        <div class="card-actions">
+                            ${game.gameUrl ? `
+                                <a href="${escapeHtml(game.gameUrl)}" target="_blank" rel="noopener noreferrer" class="btn btn-play">
+                                    Play Game
+                                </a>
+                            ` : ''}
+                            ${game.githubUrl ? `
+                                <a href="${escapeHtml(game.githubUrl)}" target="_blank" rel="noopener noreferrer" class="btn btn-code">
+                                    Source Code
+                                </a>
+                            ` : ''}
+                        </div>
+                    </article>
+                `;
+            }).join('');
+        }
+
+        fetch('./games.json')
+            .then(res => {
+                if (!res.ok) throw new Error('Could not load games.json');
+                return res.json();
+            })
+            .then(renderGames)
+            .catch(() => {
+                console.log("fahh");
+            });
+        
+        fetch("https://live.alimad.co/ping?app=haven-lahore-wall")
+    </script>
+</body>
+</html>
