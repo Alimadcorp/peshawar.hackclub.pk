@@ -5,7 +5,7 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <title>Haven Peshawar Wall</title>
-<link href="https://haven.hackclub.com/images/hedgehog.webp" rel="icon" type="image/png"/>
+<link href="assets/haven.hackclub.com/images/hedgehog.webp " rel="icon" type="image/png"/>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Darumadrop+One&amp;family=Jua&amp;display=swap" rel="stylesheet"/>
@@ -40,7 +40,7 @@
 
         body {
             background-color: var(--haven-green);
-            background-image: url("https://haven.hackclub.com/images/hero/hero-bg-no-sticky-tree.webp");
+            background-image: url("assets/haven.hackclub.com/images/hero/hero-bg-no-sticky-tree.webp");
             background-size: cover;
             background-position: top center;
             background-attachment: fixed;
@@ -127,7 +127,6 @@
             transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
 
-        /* Rank Card Highlights & Badges */
         .game-card.rank-1 {
             outline-color: #d99b16;
             box-shadow: 0 12px 28px rgba(217, 155, 22, 0.45);
@@ -148,7 +147,6 @@
             z-index: 5;
             font-family: var(--font-display);
             font-size: 1.35rem;
-            /* line-height: 1; */
             padding: 0.2rem 0.85rem;
             border-radius: 999px;
             border: 3px solid #ffffff;
@@ -216,7 +214,6 @@
             text-overflow: ellipsis;
         }
 
-        /* Team Members Pills */
         .team-section {
             margin-top: auto;
             margin-bottom: 1rem;
@@ -323,12 +320,14 @@
 <img alt="Hack Club Haven" class="logo" src="assets/haven.hackclub.com/images/logo.webp"/>
 </a>
 <h1>Haven Peshawar Wall</h1>
-<p class="subtitle">11 students participated out of which 10 made a total of 9 games.</p>
+<p class="subtitle">11 students participated out of which 6 made a total of 6 games.</p>
 </header>
 <main>
 <div class="games-grid" id="games-grid"></div>
 </main>
-<p style="text-align: center; padding-bottom: 5rem; color: var(--haven-orange-deep);">Made with &lt;3 and :3c by your local organizers</p>
+<p style="display: flex; align-items: center; justify-content: center; padding-bottom: 5rem; color: var(--haven-orange-deep); gap: 0.35rem;">
+  Made with &lt;3 and <img src="https://emoji.slack-edge.com/T09V59WQY1E/sobson/2c0ed6539391c1da.png" style="width: 24px;"> by your local organizers
+</p>
 <script>
         function formatMemberName(fullName) {
             return fullName.trim().replace(/\s+[A-Za-z]\.?$/, '');
@@ -415,7 +414,7 @@
                 console.log("fahh");
             });
         
-        fetch("https://live.alimad.co/ping?app=haven-lahore-wall")
+        fetch("https://live.alimad.co/ping?app=haven-peshawar-wall")
     </script>
 </body>
 </html>
